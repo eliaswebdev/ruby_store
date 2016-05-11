@@ -3,18 +3,18 @@ Active Record Basics
 
 # CRUD (CREATE - READ - UPDATE - DELETE)
 
-* Dentro da pasta do projeto:
-	** rails console 
+* Dentro da pasta do projeto rode o comando:
+> rails console 
 
 ## 1) (Create) Inclusão de registros dentro do banco dados através do Active Record
 * Category.create(name: "MousePad Ruby")
- => (0.4ms)  BEGIN
- => SQL (0.4ms)  INSERT INTO `categories` (`name`, `created_at`, `updated_at`) VALUES ('MousePad Ruby', '2016-05-11 12:08:10', '2016-05-11 12:08:10')
- => (0.7ms)  COMMIT
+	=> (0.4ms)  BEGIN
+	=> SQL (0.4ms)  INSERT INTO `categories` (`name`, `created_at`, `updated_at`) VALUES ('MousePad Ruby', '2016-05-11 12:08:10', '2016-05-11 12:08:10')
+	=> (0.7ms)  COMMIT
 
 * boneta = Category.new
 * boneta.class
- => Category(id: integer, name: string, created_at: datetime, updated_at: datetime)
+	=> Category(id: integer, name: string, created_at: datetime, updated_at: datetime)
 
 * boneta.name = "Boné Ruby on Rails Rules"
 * boneta
@@ -38,7 +38,7 @@ Active Record Basics
 	category.name
   end
   categories.map {|cat| [cat.name, cat.id]}
-```ruby
+```
 
 * Category.all
 * Category.first
