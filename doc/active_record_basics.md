@@ -1,12 +1,12 @@
 Active Record Basics
 ====================
 
-# CRUD (CREATE - READ - UPDATE - DELETE)
+## CRUD (CREATE - READ - UPDATE - DELETE)
 
 * Dentro da pasta do projeto rode o comando:
 	** rails console 
 
-## 1) (Create) Inclusão de registros dentro do banco dados através do Active Record
+### 1) (Create) Inclusão de registros dentro do banco dados através do Active Record
 * criando registros
 ```ruby
 	Category.create(name: "MousePad Ruby")
@@ -29,7 +29,7 @@ Active Record Basics
 	casacos.class
 ```
 
-## 2) (READ) Listagem dos meus registros do banco de dados através de objetos
+### 2) (READ) Listagem dos meus registros do banco de dados através de objetos
 * listando registros
 ```ruby
 	categories = Category.all
