@@ -32,56 +32,67 @@ Active Record Basics
 ## 2) (READ) Listagem dos meus registros do banco de dados através de objetos
 
 ```ruby
-  categories = Category.all
-  categories.size
-  categories.each do |category|
-	category.name
-  end
-  categories.map {|cat| [cat.name, cat.id]}
+	categories = Category.all
+
+	categories.size
+
+	categories.each do |category|
+		category.name
+	end
+
+	categories.map {|cat| [cat.name, cat.id]}
+
+	Category.all
+	Category.first
+	Category.second # até Category.last
+	Category.all[0]
+	Category.all[1]
+	Category.all[2]
+	Category.all[-1] # igual a: Category.last
 ```
 
-* Category.all
-* Category.first
-* Category.second # até Category.last
-* Category.all[0]
-* Category.all[1]
-* Category.all[2]
-* Category.all[-1] # igual a: Category.last
-
 * find()
-	* Category.find(1)
-	* Category.find(2) # se não encontrar: ActiveRecord::RecordNotFound: Couldn't find Category with 'id'=2
-	* Category.find(3)
-
+```ruby
+	Category.find(1)
+	Category.find(2) # se não encontrar: ActiveRecord::RecordNotFound: Couldn't find Category with 'id'=2
+	Category.find(3)
+```
 * find_by()
-	* Category.find_by(:name => 'Camiseta Ruby')
-	* Category.find_by(:name => 'Camiseta Rubys', id: 1) # registros duplicados:
-	* Category.find_by(name: 'Camisetas') # sempre pega o primeiro que achar
+```ruby
+	Category.find_by(:name => 'Camiseta Ruby')
+	Category.find_by(:name => 'Camiseta Rubys', id: 1) # registros duplicados:
+	Category.find_by(name: 'Camisetas') # sempre pega o primeiro que achar
+```
 
 * where()
-	* Category.where(name: 'Camisetas') # trás um array todos os registros encontrados
-	* Category.where(name: 'Camisetas').length
-	  Category Load (0.6ms)  SELECT `categories`.* FROM `categories` WHERE `categories`.`name` = 'Camisetas'
-	=> 2
-	* Category.where(name: 'Camisetas').count
-	   (0.6ms)  SELECT COUNT(*) FROM `categories` WHERE `categories`.`name` = 'Camisetas'
-	=> 2
-	* Category.where(name: 'Camisetas').size
-	   (0.6ms)  SELECT COUNT(*) FROM `categories` WHERE `categories`.`name` = 'Camisetas'
-	=> 2
-	* Category.where(name: 'Camisetas')
-	* Category.where(name: 'Camisetas').size
+```ruby
+	Category.where(name: 'Camisetas') # trás um array todos os registros encontrados
+	Category.where(name: 'Camisetas').length
+		  Category Load (0.6ms)  SELECT `categories`.* FROM `categories` WHERE `categories`.`name` = 'Camisetas'
+		=> 2
+	Category.where(name: 'Camisetas').count
+		   (0.6ms)  SELECT COUNT(*) FROM `categories` WHERE `categories`.`name` = 'Camisetas'
+		=> 2
+	Category.where(name: 'Camisetas').size
+		   (0.6ms)  SELECT COUNT(*) FROM `categories` WHERE `categories`.`name` = 'Camisetas'
+		=> 2
+	Category.where(name: 'Camisetas')
+	Category.where(name: 'Camisetas').size
+```
 
 * where.not()
-	* Category.where.not(name: 'Camisetas')
-	* Category.where.not(name: 'Camisetas').size		
-
+```ruby
+	Category.where.not(name: 'Camisetas')
+	Category.where.not(name: 'Camisetas').size		
+```
 
 * where com like
-	* Category.where("name LIKE 'C%' ")
-	* Category.where("name LIKE 'C%' ").size
-	* Category.where.not("name LIKE 'C%' ")
-	* Category.where.not("name LIKE 'C%' ").size
+```ruby
+	Category.where("name LIKE 'C%' ")
+	Category.where("name LIKE 'C%' ").size
+	Category.where.not("name LIKE 'C%' ")
+	Category.where.not("name LIKE 'C%' ").size
+```ruby	
 
 
 
