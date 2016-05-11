@@ -92,7 +92,7 @@ Active Record Basics
 	Category.where("name LIKE 'C%' ").size
 	Category.where.not("name LIKE 'C%' ")
 	Category.where.not("name LIKE 'C%' ").size
-```ruby	
+```
 
 
 
