@@ -1,11 +1,6 @@
-<p id="notice"><%= notice %></p>
+<h1>Exibindo detalhes da Categoria</h1>
 
-<p>
-  <strong>Id:</strong>
-  <%= @category.id %> <br>
-  <strong>Name:</strong>
-  <%= @category.name %> <br>
-</p>
-
-<%= link_to 'Edit', edit_category_path(@category) %> |
-<%= link_to 'Back', categories_path %>
+<p>Nome: <%= @category.name %></p>
+<p>Status: <%= show_status(@category.status) %></p>
+<p>Created_at: <%= @category.created_at %></p>
+<p>Updated_at: <%= @category.updated_at %></p>

@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
 
-  resources :categories
-
+  # resources :posts
   root 'pages#home'
 
+  get '/contatos' => 'contatos#index'
 
-
+  # CRUD DE CATEGORIAS
+  get '/categorias' => 'categories#index'
+  get '/categorias/:id' => 'categories#show'
 
 
 

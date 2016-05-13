@@ -27,6 +27,7 @@ Active Record Basics
 	casacos = Category.create(:name => 'Casacos e Moletons')
 	casacos.name
 	casacos.class
+	Category.create([{name: 'Camisetas'}, {name: 'Squeeze'}, {name: 'Chaveiros'}])
 ```
 
 ### 2) (READ) Listagem dos meus registros do banco de dados através de objetos
@@ -93,6 +94,44 @@ Active Record Basics
 	Category.where.not("name LIKE 'C%' ")
 	Category.where.not("name LIKE 'C%' ").size
 ```
+
+
+### 3) (UPDATE) Atualizando registros
+* atualizando registro por objeto
+```ruby
+	categorias = Category.all
+	chaveiro = categorias.last
+	chaveiro.name = 'Chaveiro'
+	chaveiro.save
+```
+* atualizando vários registros de uma vez
+	- rails generate migration add_column_status_to_categories status:boolean
+	- rake db:migrate
+```ruby
+	reload!
+	categorias = Category.all
+	categorias.map {|cat| cat.status}
+	categorias.update_all(status: true)
+	categorias.update_all(status: false)
+	categorias.where('id < 5').update_all(status: true)
+
+	Category.create(name: 'Garrafinha')
+	Category.last.update(name: 'Squeeze', status: true)
+
+```
+
+### 4) (DELETE) Deletando registros
+* Excluindo registros
+```ruby
+	Category.all.first.destroy
+	Category.all.last.destroy
+	Category.where(status: false).destroy_all
+	Category.all.destroy
+```
+
+
+
+
 
 
 
