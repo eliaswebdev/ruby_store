@@ -3,11 +3,16 @@ Rails.application.routes.draw do
   # resources :posts
   root 'pages#home'
 
-  get '/contatos' => 'contatos#index'
+  get '/contatos' => 'contatos#index', as: :contatos
 
   # CRUD DE CATEGORIAS
-  get '/categorias' => 'categories#index'
-  get '/categorias/:id' => 'categories#show'
+  get '/categories' => 'categories#index', as: :categories
+  get '/categories/edit/:id' => 'categories#edit', as: :edit_category
+  get '/categories/new' => 'categories#new', as: :new_category
+  post '/categories/update' => 'categories#update', as: :update_category
+  post '/categories/create' => 'categories#create', as: :create_category
+  get '/categories/:id' => 'categories#show', as: :category
+  delete '/categories/:id' => 'categories#destroy', as: :delete_category
 
 
 

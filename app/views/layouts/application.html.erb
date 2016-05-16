@@ -1,14 +1,25 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
-  <title>RubyStore</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
+	<meta charset="UTF-8">
+	<title>Ruby Store</title>
+	<%= stylesheet_link_tag 'application' %>
+	<%= csrf_meta_tags %>
 </head>
 <body>
 
-<%= yield %>
+	<nav class="navbar-top">
+		<ul>
+			<li><%= link_to "Home", root_path %></li>
+			<li><%= link_to "Categorias", categories_path %></li>
+			<li><%= link_to "Contatos", contatos_path %></li>
+		</ul>
+	</nav>
+	
+	<%= yield %>
 
+	<%= debug params %>
+
+	<%= javascript_include_tag "application" %>
 </body>
 </html>
