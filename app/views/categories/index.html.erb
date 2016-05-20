@@ -1,8 +1,10 @@
-<h1>Categorias</h1>
+<div class="page-header">
+	<%= link_to "Cadastrar", new_category_path, class: 'btn btn-primary pull-right' %>
+	<h1>Categorias</h1>
+</div>
 
-<%= link_to "Cadastrar", new_category_path %>
 
-<table>
+<table class="table">
 	<thead>
 		<tr>
 			<th width="20">id</th>
@@ -20,12 +22,10 @@
 			<td><%= category.name %></td>
 			<td><%= category.created_at %></td>
 			<td><%= category.updated_at %></td>
-			<td>
-				<%= link_to 'Show', category_path(category.id) %>
-				
-				| <%= link_to 'Edit', edit_category_path(category.id) %>
-				
-				| <%= link_to 'Delete', category_path(category.id), method: :delete %>
+			<td nowrap="nowrap">
+				<%= link_to 'Show', category_path(category.id), class: 'btn btn-info' %>
+				<%= link_to 'Edit', edit_category_path(category.id), class: 'btn btn-primary' %>
+				<%= link_to 'Delete', category_path(category.id), method: :delete, data: {confirm: 'Confirma exclusão do registro?'}, class: 'btn btn-danger' %>
 				
 			</td>
 		</tr>

@@ -7,16 +7,23 @@
 	</ul>
 	<% end %>
 
-	<p>
-		<%= f.label :name %>
-		<%= f.text_field :name %>
-	</p>
+	
+	<%= f.label :name %>
+	<div class="form-group">
+		<%= f.text_field :name, class: "form-control" %>
+	</div>
 
-	<p>
-		<%= f.label :status %>
+	
+
+	<%= f.label :status %>
+	
+	<div class="form-group">
 		<%= f.check_box :status %>
-	</p>
-
-	<%= f.submit -%>
+	</div>
+	
+		
+	<div class="form-actions">
+		<%= f.submit nil, class: 'btn btn-primary' -%>
+	</div>
 
 <% end -%>
