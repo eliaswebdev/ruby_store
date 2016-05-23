@@ -1,29 +1,8 @@
-<%= form_for @category do |f|  -%>
-	<% if @category.errors.any? %>
-	<ul>
-	  <% @category.errors.full_messages.each do |msg| %>
-	    <li><%= msg %></li>
-	  <% end %>
-	</ul>
-	<% end %>
+<%= simple_form_for @category, :html => { :class => 'form-vertical' } do |f| %>
+  <%= f.input :name %>
+  <%= f.input :status %>
 
-	
-	<%= f.label :name %>
-	<div class="form-group">
-		<%= f.text_field :name, class: "form-control" %>
-	</div>
-
-	
-
-	<%= f.label :status %>
-	
-	<div class="form-group">
-		<%= f.check_box :status %>
-	</div>
-	
-		
-	<div class="form-actions">
-		<%= f.submit nil, class: 'btn btn-primary' -%>
-	</div>
-
-<% end -%>
+  <%= f.button :submit, :class => 'btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                categories_path, :class => 'btn btn-default' %>
+<% end %>

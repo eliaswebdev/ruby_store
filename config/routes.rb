@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   # CRUD DE CATEGORIAS
   resources :categories
   resources :posts
+  resources :products
+
+
   # get '/categories' => 'categories#index', as: :categories
   # get '/categories/edit/:id' => 'categories#edit', as: :edit_category
   # get '/categories/new' => 'categories#new', as: :new_category

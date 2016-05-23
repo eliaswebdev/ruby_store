@@ -18,13 +18,14 @@
       </div>
     </div>
 
- -->
+-->
 
-<%= nav_bar fixed: :top, brand: "Ruby Store" do %>
+<%= nav_bar fixed: :top, brand: "Ruby Store", responsive: true do %>
   <%= menu_group do %>
       <%= menu_item "Home", root_path %>
       <%= menu_item "Categorias", categories_path %>
       <%= menu_item "Posts", posts_path %>
+      <%= menu_item "Products", products_path %>
       <%= menu_item "Contatos", contatos_path %>
   <% end -%>
 <% end -%>
