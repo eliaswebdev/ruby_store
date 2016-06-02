@@ -1,5 +1,5 @@
-class CategoriesController < ApplicationController
-
+class  Admin::CategoriesController < ApplicationController
+	before_action :authenticate_user!
 	before_action :set_category, only: [:show, :edit, :update, :destroy]
 
 
@@ -18,7 +18,7 @@ class CategoriesController < ApplicationController
 		@category = Category.new(category_params)
 		
 		if @category.save
-			redirect_to categories_path, notice: 'A categoria foi cadastrada com sucesso!'
+			redirect_to admin_categories_path, notice: 'A categoria foi cadastrada com sucesso!'
 		else
 			render :new
 		end
@@ -31,7 +31,7 @@ class CategoriesController < ApplicationController
 
 	def update
 		if @category.update(category_params)
-			redirect_to categories_path, notice: 'A categoria foi atualizada com sucesso!'
+			redirect_to admin_categories_path, notice: 'A categoria foi atualizada com sucesso!'
 		else
 			render :edit
 		end
@@ -39,7 +39,7 @@ class CategoriesController < ApplicationController
 
 	def destroy
 		@category.destroy
-		redirect_to categories_path, notice: 'A categoria foi excluída com sucesso!'
+		redirect_to admin_categories_path, notice: 'A categoria foi excluída com sucesso!'
 
 	end
 
