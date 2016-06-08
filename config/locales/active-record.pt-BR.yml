@@ -3,6 +3,7 @@ pt-BR:
     models:
       category: Categoria
       product: Produto
+      user: Usuário
 
     attributes:
       category:
@@ -16,6 +17,13 @@ pt-BR:
         status: Situação
         created_at: Cadatrado Em
         updated_at: Atualizado Em
+
+      user:
+        name: Nome
+        email: E-mail
+        password: Senha
+        password_confirmation: Confirme sua Senha
+        remember_me: Lembrar senha
 
 
 

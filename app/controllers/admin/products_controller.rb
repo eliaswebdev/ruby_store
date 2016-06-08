@@ -1,5 +1,4 @@
-class  Admin::ProductsController < ApplicationController
-  before_action :authenticate_user!
+class  Admin::ProductsController < AdminController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   # GET /products
