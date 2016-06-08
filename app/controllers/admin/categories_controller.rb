@@ -1,5 +1,5 @@
 class  Admin::CategoriesController < AdminController
-	before_action :set_category, only: [:show, :edit, :update, :destroy]
+	before_action :set_category, only: [:show, :edit, :update, :destroy, :ativar, :desativar, :change_status]
 
 	def index
 		@categories = Category.all
@@ -39,6 +39,26 @@ class  Admin::CategoriesController < AdminController
 		@category.destroy
 		redirect_to admin_categories_path, notice: 'A categoria foi excluída com sucesso!'
 
+	end
+
+	def ativar
+		@category.update(status: true)
+		redirect_to admin_categories_path, notice: 'A categoria foi ativada com sucesso!'
+	end
+
+	def desativar
+		@category.update(status: false)
+		redirect_to admin_categories_path, notice: 'A categoria foi desativada com sucesso!'
+	end
+
+	def change_status
+		if @category.status == true
+			@category.update(status: false)
+			redirect_to admin_categories_path, notice: 'A categoria foi desativada com sucesso!'
+		else
+			@category.update(status: true)
+			redirect_to admin_categories_path, notice: 'A categoria foi ativada com sucesso!'			
+		end
 	end
 
 	private

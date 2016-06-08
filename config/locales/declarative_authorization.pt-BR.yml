@@ -1,0 +1,4 @@
+pt-BR: 
+  declarative_authorization:
+    permission_denied: "Desculpe, você não tem permissão para acessar esta área."
+    permission_acesses: "Desculpe, você precisa esta logado para acessar esta área."

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160608113741) do
+ActiveRecord::Schema.define(version: 20160608120434) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -19,6 +19,16 @@ ActiveRecord::Schema.define(version: 20160608113741) do
     t.datetime "updated_at",             null: false
     t.boolean  "status"
   end
+
+  create_table "permissions", force: :cascade do |t|
+    t.integer  "role_id",    limit: 4
+    t.integer  "user_id",    limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "permissions", ["role_id"], name: "index_permissions_on_role_id", using: :btree
+  add_index "permissions", ["user_id"], name: "index_permissions_on_user_id", using: :btree
 
   create_table "posts", force: :cascade do |t|
     t.string   "title",      limit: 255
@@ -36,6 +46,14 @@ ActiveRecord::Schema.define(version: 20160608113741) do
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
     t.boolean  "status"
+  end
+
+  create_table "roles", force: :cascade do |t|
+    t.string   "name",        limit: 255
+    t.string   "value",       limit: 255
+    t.string   "description", limit: 255
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -57,4 +75,6 @@ ActiveRecord::Schema.define(version: 20160608113741) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "permissions", "roles"
+  add_foreign_key "permissions", "users"
 end
