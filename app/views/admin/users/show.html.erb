@@ -18,6 +18,15 @@
   <dd><%= @user.name %></dd>
 </dl>
 
+<fieldset>
+  <legend>Permissões</legend>
+  <ul>
+    <% @user.roles.each do |role| -%>
+      <li><%= role.description -%></li>
+    <% end -%>
+  </ul>
+</fieldset>
+
 <%= link_to t('.back', :default => t("helpers.links.back")),
               admin_users_path, :class => 'btn btn-default'  %>
 <%= link_to t('.edit', :default => t("helpers.links.edit")),

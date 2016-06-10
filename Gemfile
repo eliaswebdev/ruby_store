@@ -8,7 +8,6 @@ gem 'mysql2', '>= 0.3.13', '< 0.5'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
-gem 'therubyracer', platforms: :ruby
 gem 'jquery-rails'
 
 gem 'jbuilder', '~> 2.0'
@@ -17,10 +16,12 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 gem 'declarative_authorization'
 
+gem 'therubyracer', platforms: :ruby
 gem 'less-rails'
 gem 'twitter-bootstrap-rails'
 
 gem 'simple_form'
+gem 'nested_form'
 
 group :development, :test do
   gem 'byebug'

@@ -3,6 +3,18 @@
   <%= f.input :email %>
   <%= f.input :password if f.object.new_record? %>
 
+
+  <legend>Dados do Perfil</legend>
+
+  <%= f.fields_for :profile do |p| %>
+    <%= p.input :fullname -%>
+    <%= p.input :city_id %>
+    <%= p.input :cpf %>
+    <%= p.input :rg %>
+    <%= p.input :date_of_birth %>
+  <% end %>
+    
+
   <div class="form-inline form-inline-custom">
     <%= f.association :roles, as: :check_boxes %>
   </div>

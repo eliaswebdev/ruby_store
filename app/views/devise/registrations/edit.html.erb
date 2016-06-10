@@ -1,8 +1,8 @@
 <h2>Meu Perfil</h2>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+<%= simple_nested_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= f.error_notification %>
-
+  <legend>Dados da Conta</legend>
   <div class="form-inputs">
     <%= f.input :name, required: true %>
 
@@ -16,6 +16,16 @@
     <%= f.input :password_confirmation, required: false %>
     <%= f.input :current_password, hint: "we need your current password to confirm your changes", required: true %>
   </div>
+
+  <legend>Dados do Perfil</legend>
+
+  <%= f.fields_for :profile do |p| %>
+    <%= p.input :fullname -%>
+    <%= p.input :city_id %>
+    <%= p.input :cpf %>
+    <%= p.input :rg %>
+    <%= p.input :date_of_birth %>
+  <% end %>
 
   <div class="form-actions">
     <%= f.button :submit, "Salvar" %>

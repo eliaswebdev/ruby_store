@@ -1,5 +1,5 @@
 <%= simple_form_for [:admin, @product], :html => { :class => 'form-vertical' } do |f| %>
-  <%= f.input :category_id %>
+  <%= f.association :category, prompt: 'Selecione a categoria' %>
   <%= f.input :name %>
   <%= f.input :description %>
   <%= f.input :price %>

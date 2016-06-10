@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  city_id: 
+  user_id: 
+  fullname: MyString
+  cpf: MyString
+  rg: MyString
+  date_of_birth: 2016-06-10
+
+two:
+  city_id: 
+  user_id: 
+  fullname: MyString
+  cpf: MyString
+  rg: MyString
+  date_of_birth: 2016-06-10

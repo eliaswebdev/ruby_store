@@ -23,6 +23,7 @@ pt-BR:
         email: E-mail
         password: Senha
         password_confirmation: Confirme sua Senha
+        current_password: Senha Atual
         remember_me: Lembrar senha
 
 

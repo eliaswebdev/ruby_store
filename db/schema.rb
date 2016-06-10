@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160608120434) do
+ActiveRecord::Schema.define(version: 20160610123604) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -19,6 +19,26 @@ ActiveRecord::Schema.define(version: 20160608120434) do
     t.datetime "updated_at",             null: false
     t.boolean  "status"
   end
+
+  create_table "cities", force: :cascade do |t|
+    t.integer  "state_id",   limit: 4
+    t.string   "name",       limit: 255
+    t.boolean  "capital"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "cities", ["state_id"], name: "index_cities_on_state_id", using: :btree
+
+  create_table "likes", force: :cascade do |t|
+    t.integer  "product_id", limit: 4
+    t.integer  "user_id",    limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "likes", ["product_id"], name: "index_likes_on_product_id", using: :btree
+  add_index "likes", ["user_id"], name: "index_likes_on_user_id", using: :btree
 
   create_table "permissions", force: :cascade do |t|
     t.integer  "role_id",    limit: 4
@@ -48,12 +68,33 @@ ActiveRecord::Schema.define(version: 20160608120434) do
     t.boolean  "status"
   end
 
+  create_table "profiles", force: :cascade do |t|
+    t.integer  "city_id",       limit: 4
+    t.integer  "user_id",       limit: 4
+    t.string   "fullname",      limit: 255
+    t.string   "cpf",           limit: 255
+    t.string   "rg",            limit: 255
+    t.date     "date_of_birth"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  add_index "profiles", ["city_id"], name: "index_profiles_on_city_id", using: :btree
+  add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree
+
   create_table "roles", force: :cascade do |t|
     t.string   "name",        limit: 255
     t.string   "value",       limit: 255
     t.string   "description", limit: 255
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
+  end
+
+  create_table "states", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.string   "acronym",    limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -75,6 +116,11 @@ ActiveRecord::Schema.define(version: 20160608120434) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "cities", "states"
+  add_foreign_key "likes", "products"
+  add_foreign_key "likes", "users"
   add_foreign_key "permissions", "roles"
   add_foreign_key "permissions", "users"
+  add_foreign_key "profiles", "cities"
+  add_foreign_key "profiles", "users"
 end

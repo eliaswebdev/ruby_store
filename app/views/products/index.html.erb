@@ -1,0 +1,29 @@
+<%- model_class = Product -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+
+
+
+
+<div class="row">
+
+<% @products.each do |product| -%>
+	<div class="col-md-4">
+		<h3><%= product.name -%></h3>
+		<p><%= product.description -%> </p>
+		<p>Preço: <%= number_to_currency product.price -%></p>
+		<hr>
+		<%= 
+			if user_signed_in?
+				if current_user.likes.where(product: product).present?
+					link_to '<i class="fa fa-thumbs-down"></i> | Descurtir'.html_safe, dislike_product_path(product), class: 'btn btn-danger btn-xs' 
+				else
+					link_to '<i class="fa fa-thumbs-up"></i> | Curtir'.html_safe, like_product_path(product), class: 'btn btn-primary btn-xs'
+				end
+			end
+		%>
+	</div>
+<% end -%>
+</div>
+

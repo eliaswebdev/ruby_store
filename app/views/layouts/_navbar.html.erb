@@ -1,11 +1,13 @@
 <%= nav_bar fixed: :top, brand: "Ruby Store", responsive: true do %>
   <%= menu_group do %>
       <%= menu_item "Home", root_path %>
+      
+      <%= menu_item "Produtos", products_path %>
 
       <% if user_signed_in? -%>
         <%= menu_item "Categorias", admin_categories_path  if permitted_to? :manage, :admin_categories %>
         <%= menu_item "Posts", admin_posts_path  if permitted_to? :manage, :admin_posts %>
-        <%= menu_item "Produtos", admin_products_path  if permitted_to? :index, :admin_products %>
+        <%= menu_item "Produtos", admin_products_path  if permitted_to? :manage, :admin_products %>
         <%= menu_item "Usuários", admin_users_path  if permitted_to? :manage, :admin_users %>
       <% end -%>
 
@@ -13,14 +15,16 @@
   <% end -%>
 
   <%= menu_group :pull => :right do %>
-  	<% if user_signed_in? -%>
-  		<%= menu_item current_user.email, root_path -%>
-  		<%= menu_item 'Sair', destroy_user_session_path, :method => Devise.sign_out_via -%>
-  	<% else -%>
-		  <%= menu_item 'Entrar', new_user_session_path -%>
-  	<% end -%>
-  			
+      <% if user_signed_in? %>
+        <%= drop_down 'Minha Conta' do %>
+          <%= menu_item 'Editar Perfil', edit_user_registration_path %>
+        <% end %>        
+          <%= menu_item "<i class=\"fa fa-power-off\"></i> Sair".html_safe, destroy_user_session_path, :method => Devise.sign_out_via %>
+      <% else %>
+          <%= menu_item "<i class=\"fa fa-power-off\"></i> Entrar".html_safe, new_user_session_path %>
+      <% end %>
   <% end -%>
+  
 <% end -%>
 
 

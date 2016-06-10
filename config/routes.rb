@@ -2,6 +2,15 @@ Rails.application.routes.draw do
 
   get '/contatos' => 'contatos#index', as: :contatos
 
+  resources :products, only: [:index, :show] do
+
+    member do 
+      get :like  
+      get :dislike
+    end
+
+  end
+
   namespace :admin do
   	root 'products#index'
     
@@ -24,5 +33,5 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: {:registrations => "users/registrations"}
 
-  root 'pages#home'
+  root 'products#index'
 end
