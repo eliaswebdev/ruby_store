@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :like, :dislike]
 
   def index
-    @products = Product.all
+    @products = Product.published
   end
 
   def show
@@ -27,6 +27,6 @@ class ProductsController < ApplicationController
 
   private
     def set_product
-      @product = Product.find(params[:id])
+      @product = Product.published.find(params[:id])
     end
 end

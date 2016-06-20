@@ -12,17 +12,16 @@
 	<div class="col-md-4">
 		<h3><%= product.name -%></h3>
 		<p><%= product.description -%> </p>
-		<p>Preço: <%= number_to_currency product.price -%></p>
+		<p>Preço: <%= number_to_currency product.price_view -%></p>
 		<hr>
-		<%= 
-			if user_signed_in?
-				if current_user.likes.where(product: product).present?
-					link_to '<i class="fa fa-thumbs-down"></i> | Descurtir'.html_safe, dislike_product_path(product), class: 'btn btn-danger btn-xs' 
-				else
-					link_to '<i class="fa fa-thumbs-up"></i> | Curtir'.html_safe, like_product_path(product), class: 'btn btn-primary btn-xs'
-				end
-			end
-		%>
+			<%= link_to "<i class=\"fa fa-thumbs-up\"></i> (#{product.likes.size})".html_safe, 'javascript:;', class: 'btn btn-primary btn-xs' %>
+		<% if user_signed_in? %>
+			<% if current_user.likes.where(product: product).present? %>
+				<%= link_to "<i class=\"fa fa-thumbs-down\"></i> | Descurtir".html_safe, dislike_product_path(product), class: 'btn btn-danger btn-xs' %>
+			<% else %>
+					<%= link_to "<i class=\"fa fa-thumbs-up\"></i> | Curtir".html_safe, like_product_path(product), class: 'btn btn-success btn-xs' %>
+			<% end %>
+		<% end %>
 	</div>
 <% end -%>
 </div>

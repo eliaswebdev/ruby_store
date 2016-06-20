@@ -24,10 +24,8 @@ gem 'simple_form'
 gem 'nested_form'
 
 group :development, :test do
+  gem 'railroady'
   gem 'byebug'
-end
-
-group :development do
   gem 'web-console', '~> 2.0'
   gem 'spring'
 end

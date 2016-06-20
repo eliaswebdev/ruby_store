@@ -3,14 +3,6 @@
       <%= menu_item "Home", root_path %>
       
       <%= menu_item "Produtos", products_path %>
-
-      <% if user_signed_in? -%>
-        <%= menu_item "Categorias", admin_categories_path  if permitted_to? :manage, :admin_categories %>
-        <%= menu_item "Posts", admin_posts_path  if permitted_to? :manage, :admin_posts %>
-        <%= menu_item "Produtos", admin_products_path  if permitted_to? :manage, :admin_products %>
-        <%= menu_item "Usuários", admin_users_path  if permitted_to? :manage, :admin_users %>
-      <% end -%>
-
       <%= menu_item "Contatos", contatos_path %>
   <% end -%>
 
